@@ -1,0 +1,250 @@
+@import "tailwindcss/theme.css";
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-family: "Inter var", sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Inter var", sans-serif;
+  color: var(--bs-emphasis-color);
+}
+
+/* Sticky glass-clean Freshen navigation */
+.tf-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(125, 211, 252, 0.55);
+}
+
+.tf-card {
+  background-color: var(--bs-body-bg);
+  border: 1px solid rgba(125, 211, 252, 0.65);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px rgba(12, 74, 110, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tf-card:hover {
+  border-color: var(--bs-primary);
+  box-shadow: 0 18px 38px rgba(12, 74, 110, 0.09);
+}
+
+.tf-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background-color: var(--bs-primary-bg-subtle);
+  color: var(--bs-primary-text-emphasis);
+}
+
+.tf-zone-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  color: var(--bs-emphasis-color);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.tf-zone-tag:hover {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Preloader drum spin */
+@keyframes tfDrumSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.tf-drum-rotor {
+  transform-origin: 60px 66px;
+  animation: tfDrumSpin 2.4s linear infinite;
+}
+
+/* Animation #8: WhatsApp button entrance + ambient pulse */
+@keyframes tfWhatsappEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.55) translateY(20px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.08) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes tfWhatsappPulse {
+  0% {
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.38), 0 0 0 0 rgba(37, 211, 102, 0.55);
+  }
+  70% {
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.38), 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.38), 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes tfVoiceRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+.tf-floating-whatsapp {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #25D366;
+  color: #ffffff;
+  z-index: 9998;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  animation: tfWhatsappEntrance 0.65s cubic-bezier(0.22, 1, 0.36, 1) both,
+    tfWhatsappPulse 2.8s ease-out 0.8s infinite;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.tf-floating-whatsapp:hover,
+.tf-floating-whatsapp:focus-visible {
+  background-color: #1fb855;
+  color: #ffffff;
+  transform: scale(1.06);
+}
+
+.tf-floating-voice {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--bs-primary);
+  color: #ffffff;
+  z-index: 9998;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.34);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.tf-floating-voice:hover,
+.tf-floating-voice:focus-visible {
+  background-color: #c2410c;
+  transform: scale(1.06);
+}
+
+.tf-voice-pulse-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 3px solid var(--bs-primary);
+  pointer-events: none;
+  animation: tfVoiceRing 1.35s ease-out infinite;
+}
+
+.tf-float-tooltip {
+  position: fixed;
+  bottom: 34px;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background-color: var(--bs-emphasis-color);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(12, 74, 110, 0.22);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 9998;
+}
+
+.tf-float-tooltip-left {
+  left: 90px;
+}
+
+.tf-float-tooltip-right {
+  right: 90px;
+}
+
+.tf-float-wrap:hover .tf-float-tooltip,
+.tf-float-wrap:focus-within .tf-float-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cookie consent banner */
+.tf-cookie-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: #ffffff;
+  border-top: 2px solid var(--bs-border-color);
+  box-shadow: 0 -12px 36px rgba(12, 74, 110, 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tf-drum-rotor,
+  .tf-floating-whatsapp,
+  .tf-voice-pulse-ring {
+    animation: none !important;
+  }
+}
